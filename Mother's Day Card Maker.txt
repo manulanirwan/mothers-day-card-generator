@@ -1,0 +1,294 @@
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHZFPB51aEKO4plBj8OzPuOmZZOGf1x48CvrISPG66ViLUAnzqM1kHcOspgRk3YKlnbRj9usG_XLD0ISXo8bV6ONhBqAPHyAXJj8_wG0jj82DBPTeVQ51H-b4soVGhZy3M5gMph9MxCn6QIh8ES3hooDZd6QlRDuAmh1T9rSBK9tKc3FJiVNQnMweZQGg/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_12_47%20PM.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" data-original-height="1254" data-original-width="1254" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHZFPB51aEKO4plBj8OzPuOmZZOGf1x48CvrISPG66ViLUAnzqM1kHcOspgRk3YKlnbRj9usG_XLD0ISXo8bV6ONhBqAPHyAXJj8_wG0jj82DBPTeVQ51H-b4soVGhZy3M5gMph9MxCn6QIh8ES3hooDZd6QlRDuAmh1T9rSBK9tKc3FJiVNQnMweZQGg/s1600/ChatGPT%20Image%20May%2029,%202026,%2005_12_47%20PM.png"/></a></div><div class="mom-maker-wrapper">
+    <h2 class="mom-title">Mother's Day Card Generator</h2>
+    <p class="mom-subtitle">Upload a photo, pick an elegant border design, and write a beautiful message for your mother!</p>
+
+    <div class="mom-input-group">
+        <label for="userGreeting" class="mom-label">Your Custom Message:</label>
+        <input type="text" id="userGreeting" placeholder="Type a message..." value="To the Best Mom in the World! Happy Mother's Day!">
+    </div>
+
+    <div class="mom-input-group">
+        <label for="imageUpload" class="mom-label">Upload Mom's Photo:</label>
+        <input type="file" id="imageUpload" accept="image/*">
+    </div>
+
+    <label class="mom-label">Choose Card Style Frame:</label>
+    <div class="mom-template-grid" id="momTemplateGrid">
+        <div class="mom-item active" onclick="changeFrame(0)">Elegant Pink</div>
+        <div class="mom-item" onclick="changeFrame(1)">Golden Blossom</div>
+        <div class="mom-item" onclick="changeFrame(2)">Royal Rose</div>
+        <div class="mom-item" onclick="changeFrame(3)">Vintage Minimal</div>
+    </div>
+
+    <div id="preview-container">
+        <canvas id="momCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <button class="mom-btn-download" id="downloadMomBtn">Download Mother's Day Card</button>
+</div>
+
+<style>
+    /* Scoped layout rules to blend with your Blogger light theme layout */
+    .mom-maker-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: transparent;
+    }
+    .mom-title {
+        color: #d81b60 !important; /* Soft Rose Pink Accent Header */
+        text-align: center;
+        font-size: 26px !important;
+        margin-bottom: 5px !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .mom-subtitle {
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+    .mom-input-group {
+        margin-bottom: 20px;
+    }
+    .mom-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #c2185b;
+        text-align: left;
+        font-size: 14px;
+    }
+    #userGreeting, #imageUpload {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #f48fb1;
+        background: #fff;
+        color: #333;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    #userGreeting:focus {
+        border-color: #d81b60;
+        outline: none;
+    }
+    .mom-template-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+    .mom-item {
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px 5px;
+        background: #fffdfd;
+        text-align: center;
+        font-size: 13px;
+        color: #444;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .mom-item:hover {
+        background: #ffebee;
+        border-color: #f48fb1;
+    }
+    .mom-item.active {
+        border-color: #d81b60;
+        background: #d81b60;
+        color: #fff;
+        font-weight: bold;
+    }
+    #preview-container {
+        margin: 25px 0;
+        display: flex;
+        justify-content: center;
+    }
+    #momCanvas {
+        max-width: 100%;
+        height: auto !important;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        border: 2px solid #f48fb1;
+        background: #fff;
+    }
+    .mom-btn-download {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: transform 0.2s;
+    }
+    .mom-btn-download:hover {
+        transform: scale(1.03);
+    }
+    @media (max-width: 480px) {
+        .mom-template-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('momCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let uploadedImage = null;
+    let selectedFrameIdx = 0;
+
+    // Define Framework Style Configurations
+    const frames = [
+        { name: "Elegant Pink", bg: "#FFF5F7", border: "#E91E63", accent: "#F8BBD0" },
+        { name: "Golden Blossom", bg: "#FFFDF9", border: "#D4AF37", accent: "#FFF9E6" },
+        { name: "Royal Rose", bg: "#FAFAFB", border: "#4A0E17", accent: "#D81B60" },
+        { name: "Vintage Minimal", bg: "#Fcfbfa", border: "#7D6B5D", accent: "#EFEBE9" }
+    ];
+
+    // Image Upload Handler Engine
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                uploadedImage = img;
+                drawCard();
+            };
+            img.src = event.target.result;
+        };
+        if(e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    function changeFrame(index) {
+        document.querySelector('.mom-item.active').classList.remove('active');
+        document.getElementsByClassName('mom-item')[index].classList.add('active');
+        selectedFrameIdx = index;
+        drawCard();
+    }
+
+    // Canvas Render Engine Matrix
+    function drawCard() {
+        const frame = frames[selectedFrameIdx];
+        const greetingText = document.getElementById('userGreeting').value || "";
+
+        // 1. Clear & Render Background Canvas
+        ctx.fillStyle = frame.bg;
+        ctx.fillRect(0, 0, 600, 600);
+
+        // 2. Compute and Crop User's Custom Image (Center-Cropped Square Shape)
+        if (uploadedImage) {
+            ctx.save();
+            
+            // Outer image bounding placeholder properties
+            const imgX = 120;
+            const imgY = 100;
+            const imgSize = 360;
+
+            // Clip into a clean soft-edged rounded rectangle container
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 20);
+            ctx.clip();
+
+            // Calculate center-cropping ratios aspect variables
+            const minSide = Math.min(uploadedImage.width, uploadedImage.height);
+            const sx = (uploadedImage.width - minSide) / 2;
+            const sy = (uploadedImage.height - minSide) / 2;
+
+            ctx.drawImage(uploadedImage, sx, sy, minSide, minSide, imgX, imgY, imgSize, imgSize);
+            ctx.restore();
+
+            // Fine inner gold/pink accent framing around the image container
+            ctx.strokeStyle = frame.border;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.roundRect(imgX, imgY, imgSize, imgSize, 20);
+            ctx.stroke();
+        } else {
+            // Informational Box Placeholder when no image is selected
+            ctx.fillStyle = frame.accent;
+            ctx.beginPath();
+            ctx.roundRect(120, 100, 360, 360, 20);
+            ctx.fill();
+
+            ctx.fillStyle = frame.border;
+            ctx.font = 'italic 16px "Segoe UI", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText("[ Mom's Photo Will Appear Here ]", 300, 290);
+        }
+
+        // 3. Draw Decorative Outer Border Framework Lines
+        ctx.strokeStyle = frame.border;
+        ctx.lineWidth = 6;
+        ctx.strokeRect(25, 25, 550, 550);
+        
+        ctx.strokeStyle = frame.accent;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(34, 34, 532, 532);
+
+        // 4. Corner Geometric Graphic Enhancements (Elegant Interlocking Corner Squares)
+        ctx.fillStyle = frame.border;
+        const offset = [25, 545];
+        offset.forEach(x => {
+            offset.forEach(y => {
+                ctx.fillRect(x == 25 ? x : x-30, y == 25 ? y : y-30, 30, 30);
+            });
+        });
+
+        // 5. Render Message Text Layout Settings
+        ctx.textAlign = 'center';
+        ctx.fillStyle = frame.border;
+        ctx.font = 'bold 24px "Segoe UI", Arial, sans-serif';
+
+        // Wraps lengthy text sentences cleanly across two lines if required
+        const words = greetingText.split(' ');
+        let line = '';
+        let startY = 510;
+        const lineHeight = 32;
+
+        for (let n = 0; n < words.length; n++) {
+            let testLine = line + words[n] + ' ';
+            let metrics = ctx.measureText(testLine);
+            if (metrics.width > 500 && n > 0) {
+                ctx.fillText(line, 300, startY);
+                line = words[n] + ' ';
+                startY += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, 300, startY);
+    }
+
+    // Monitor Text Inputs dynamically
+    document.getElementById('userGreeting').addEventListener('input', drawCard);
+
+    // Secure Local File Download Pipeline
+    document.getElementById('downloadMomBtn').addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.download = `Mothers_Day_Card.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+
+    // Default mount initialization
+    window.onload = () => { drawCard(); };
+    setTimeout(drawCard, 300);
+</script>
